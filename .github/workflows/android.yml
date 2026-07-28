@@ -16,13 +16,14 @@ jobs:
           sudo apt update
           sudo apt install -y python3-pip build-essential git zip unzip openjdk-17-jdk
 
+      - name: Install Android SDK tools
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "build-tools;35.0.0" "platforms;android-35"
+
       - name: Install Buildozer
         run: |
           pip3 install buildozer cython==0.29.36
-
-      - name: Accept licenses
-        run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - name: Build APK
         run: |
