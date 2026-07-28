@@ -11,13 +11,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build APK with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        with:
-          workdir: .
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y python3-pip build-essential git zip unzip openjdk-17-jdk
+
+      - name: Install Buildozer
+        run: |
+          pip3 install buildozer cython==0.29.36
+
+      - name: Build APK
+        run: |
+          buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: RobotAI_App_APK
-          path: bin/*.apk
