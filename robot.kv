@@ -1,0 +1,39 @@
+#:kivy 2.3.1
+
+<RobotUI>:
+    orientation: "vertical"
+    padding: 10
+    spacing: 10
+
+    Label:
+        text: "🤖 Tobi AI - ربات امیر"
+        size_hint_y: 0.08
+        font_size: 22
+
+    ScrollView:
+        size_hint_y: 0.75
+
+        Label:
+            id: chat
+            text: root.messages
+            size_hint_y: None
+            height: self.texture_size[1]
+            text_size: self.width, None
+            font_size: 18
+
+    BoxLayout:
+        size_hint_y: 0.17
+        spacing: 5
+
+        TextInput:
+            id: input_box
+            hint_text: "پیام خود را بنویس..."
+            multiline: False
+            on_text_validate:
+                root.send_message()
+
+        Button:
+            text: "ارسال"
+            size_hint_x: 0.25
+            on_release:
+                root.send_message()
