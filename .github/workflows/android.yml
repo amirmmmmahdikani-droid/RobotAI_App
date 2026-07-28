@@ -20,6 +20,10 @@ jobs:
         run: |
           pip3 install buildozer cython==0.29.36
 
+      - name: Accept licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+
       - name: Build APK
         run: |
           buildozer android debug
@@ -28,3 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: RobotAI_App_APK
+          path: bin/*.apk
