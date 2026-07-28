@@ -1,23 +1,11 @@
-name: Android APK
+name: Test Workflow
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        with:
-          workdir: .
-          buildozer_version: stable
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: RobotAI_App_APK
-          path: bin/*.apk
+      - name: Test
+        run: echo "Workflow works"
