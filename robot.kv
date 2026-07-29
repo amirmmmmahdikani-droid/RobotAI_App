@@ -8,7 +8,7 @@
     Label:
         text: "🤖 Tobi AI - ربات هوشمند"
         size_hint_y: 0.08
-        font_name: "Vazirmatn-Regular.ttf"
+        font_name: "fonts/Vazirmatn-Regular.ttf"
         font_size: 22
 
     ScrollView:
@@ -20,7 +20,7 @@
             size_hint_y: None
             height: self.texture_size[1]
             text_size: self.width, None
-            font_name: "Vazirmatn-Regular.ttf"
+            font_name: "fonts/Vazirmatn-Regular.ttf"
             font_size: 18
 
     BoxLayout:
@@ -31,13 +31,13 @@
             id: input_box
             hint_text: "پیام خود را بنویسید..."
             multiline: False
-            font_name: "Vazirmatn-Regular.ttf"
+            font_name: "fonts/Vazirmatn-Regular.ttf"
             on_text_validate:
                 root.send_message()
 
         Button:
             text: "ارسال"
-            font_name: "Vazirmatn-Regular.ttf"
+            font_name: "fonts/Vazirmatn-Regular.ttf"
             size_hint_x: 0.25
             on_release:
                 root.send_message()
