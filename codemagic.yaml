@@ -4,13 +4,13 @@ workflows:
     max_build_duration: 60
 
     environment:
-      python: 3.11
       groups:
         - android
 
     scripts:
-      - name: Install dependencies
+      - name: Setup Python
         script: |
+          python3 --version
           pip3 install --upgrade pip
           pip3 install buildozer cython==0.29.36
 
