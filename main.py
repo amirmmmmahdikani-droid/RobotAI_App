@@ -8,7 +8,8 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.clock import Clock
-
+from kivy.resources import resource_add_path
+import os
 
 from config import ROBOT_NAME
 
@@ -31,7 +32,7 @@ from esp32 import send_command
 from voice import speak
 
 
-
+resource_add_path(os.path.join(os.path.dirname(__file__), "fonts"))
 Builder.load_file("robot.kv")
 
 
