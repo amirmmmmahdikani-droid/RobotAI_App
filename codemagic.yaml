@@ -8,11 +8,6 @@ workflows:
         - android
 
     scripts:
-      - name: Install Android tools
-        script: |
-          yes | sdkmanager --licenses || true
-          sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
-
       - name: Install Buildozer
         script: |
           pip3 install --upgrade pip
@@ -20,7 +15,7 @@ workflows:
 
       - name: Build APK
         script: |
-          buildozer android debug
+          yes | buildozer android debug
 
     artifacts:
       - bin/*.apk
