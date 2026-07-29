@@ -1,0 +1,22 @@
+workflows:
+  android-build:
+    name: Build RobotAI APK
+    max_build_duration: 60
+
+    environment:
+      python: 3.11
+      groups:
+        - android
+
+    scripts:
+      - name: Install dependencies
+        script: |
+          pip3 install --upgrade pip
+          pip3 install buildozer cython==0.29.36
+
+      - name: Build APK
+        script: |
+          buildozer android debug
+
+    artifacts:
+      - bin/*.apk
