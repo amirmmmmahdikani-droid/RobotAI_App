@@ -10,10 +10,14 @@ workflows:
     scripts:
       - name: Install Buildozer
         script: |
-          python3 -m pip install "pip<25"
-          python3 -m pip install setuptools
-          python3 -m pip install git+https://github.com/kivy/buildozer.git
+          python3 -m pip install --upgrade "pip<24"
+          python3 -m pip install setuptools==69.5.1
+          python3 -m pip install buildozer==1.5.0
           python3 -m pip install cython==0.29.36
+
+      - name: Fix pip inside buildozer
+        script: |
+          sed -i 's/pip install/pip install "pip<24"/g' ~/.buildozer/android/platform/python-for-android/pythonforandroid/recipe.py || true
 
       - name: Build APK
         script: |
