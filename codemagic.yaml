@@ -8,10 +8,10 @@ workflows:
         - android
 
     scripts:
-      - name: Install Buildozer
-        script: |
-          pip3 install --upgrade pip
-          pip3 install buildozer cython==0.29.36
+  - name: Install Buildozer
+    script: |
+      python3 -m pip install "pip<25"
+      python3 -m pip install buildozer==1.5.0 cython==0.29.36
 
       - name: Build APK
         script: |
