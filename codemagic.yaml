@@ -4,13 +4,15 @@ workflows:
     max_build_duration: 60
 
     environment:
+      python: 3.11
       groups:
         - android
 
     scripts:
       - name: Install Buildozer
         script: |
-          python3 -m pip install "pip<25"
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools
           python3 -m pip install buildozer==1.5.0 cython==0.29.36
 
       - name: Build APK
